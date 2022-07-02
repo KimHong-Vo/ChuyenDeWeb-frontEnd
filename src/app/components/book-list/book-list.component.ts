@@ -25,12 +25,21 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
     //set number item per one column
 
+    this.bookList = [{id: 123, title: 'book 1', author: 'kim', active: true, ationDate: '', category:'', description:'hello',
+                      format:'', inStockNumber:10, isbn:'', language:'VN', listPrice:86000, numberOfPages:200, ourPrice:94000,
+                      publisher:'', shippingWeight:1},
+                    {id: 124, title: 'book 1', author: 'kim', active: true, ationDate: '', category:'', description:'hello',
+                    format:'', inStockNumber:10, isbn:'', language:'VN', listPrice:86000, numberOfPages:200, ourPrice:94000,
+                    publisher:'', shippingWeight:1},
+                  {id: 125, title: 'book 1', author: 'kim', active: true, ationDate: '', category:'', description:'hello',
+                  format:'', inStockNumber:10, isbn:'', language:'VN', listPrice:86000, numberOfPages:200, ourPrice:94000,
+                  publisher:'', shippingWeight:1}];
     // get Items from server
-    this.bookService.getBooks().subscribe((response: Book[]) => {
-      this.bookList = response;
-    }, (error: HttpErrorResponse) => {
-      alert(error.message);
-    })
+    // this.bookService.getBooks().subscribe((response: Book[]) => {
+    //   this.bookList = response;
+    // }, (error: HttpErrorResponse) => {
+    //   alert(error.message);
+    // })
   }
   @HostListener('window:resize') onResize(){
     this.numberItemOnCol = browerSize.getSize();

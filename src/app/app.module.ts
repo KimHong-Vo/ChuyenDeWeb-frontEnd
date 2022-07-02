@@ -20,6 +20,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { BookDetailComponent } from './components/book-detail/book-detail.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     BookListComponent,
     NavBarComponent,
     HomeComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    BookDetailComponent,
+    ShoppingCartComponent,
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,
