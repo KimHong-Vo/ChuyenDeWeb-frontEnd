@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="head">
+
+    </div>
+    <div class="body">
+        <mat-tab-group>
+            <mat-tab label="Login">
+                <div style="margin-top: 20px;">
+                    <form (submit)="onLogin()">
+                        <div class="form-group">
+                          <mat-label>Username :*</mat-label>
+                          <mat-form-field style="background-color: #ededcc;width: 100%">
+                            <input matInput placeholder="Enter email or phone number"
+                                   id="username" name="username" [(ngModel)]="credential.username" required
+                                   autofocus/>
+                            <!--<p style="color: gray">Enter Your Username</p>-->
+                          </mat-form-field>
+    
+                        </div>
+                        <div class="form-group">
+                          <mat-label>Password :*</mat-label>
+                          <input class="form-control" type="password"
+                                 id="password" name="password" [(ngModel)]="credential.password" required/>
+                        </div>
+                        <div class="form-group">
+                          <button mat-raised-button color="primary">Login</button>   
+                        </div>
+    
+                    </form>
+                </div>
+            </mat-tab>
+            <mat-tab label="New account">
+                <div style="margin-top: 20px;">
+                    <form >
+                        <div class="form-group">
+                          <mat-label>Username :*</mat-label>
+                          <mat-form-field style="background-color: #ededcc;width: 100%">
+                            <input matInput placeholder="Enter email or phone number"
+                                   id="username" name="username" [(ngModel)]="credential.username" required
+                                   autofocus/>
+                            <!--<p style="color: gray">Enter Your Username</p>-->
+                          </mat-form-field>
+    
+                        </div>
+                        <div class="form-group">
+                          <mat-label>Password :*</mat-label>
+                          <input class="form-control" type="password"
+                                 id="password" name="password" [(ngModel)]="credential.password" required/>
+                        </div>
+                        <div class="form-group">
+                            <mat-label>Rewrite password :*</mat-label>
+                            <input class="form-control" type="password"
+                                   id="password" name="password" [(ngModel)]="credential.password" required/>
+                        </div>
+                        <div class="form-group">
+                          <button mat-raised-button color="primary">Regist</button>   
+                        </div>
+    
+                    </form>
+                </div>
+            </mat-tab>
+            <mat-tab label="Forget password">
+                <button mat-button>foget password</button>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

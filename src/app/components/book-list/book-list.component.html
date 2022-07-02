@@ -1,0 +1,44 @@
+<div class="container" >
+    <div style="align-items: center; padding-left: 5%; padding-right: 5%; margin-top: 5%; overflow: auto;">
+      <div style="position: absolute; width: 27%;">
+        <img src="../../../assets/images/logo.png" class="img-responsive right" style="width:100%; "/>
+      </div>
+      <div style="position: absolute; z-index: -2; width: 90%;">
+        <img src="../../../assets/images/wood.png" class="img-responsive right"
+           style="width: 100%; padding-top: 10%;"/>
+      </div>
+    </div>
+    <div style="margin-top: 22%; text-align: center;" >
+      <h2 class="section-headline"><span>Book list</span></h2>
+    </div>
+    <div style="margin:2% 10%;">
+      <mat-grid-list cols="{{numberItemOnCol}}" rowHeight="2:3" gutterSize="10px">
+        <mat-grid-tile *ngFor="let book of bookList" >
+          <mat-card style="border-color: #38444d !important;">
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="photo off shiba dog">
+            <mat-card-content >
+              <p>{{book.author}}</p>
+              <p>price:--------$</p>
+            </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-button><mat-icon>visibility</mat-icon></button>
+              <button mat-button><mat-icon>shopping_cart</mat-icon></button>
+            </mat-card-actions>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+  </div>
+  <div >
+    <mat-paginator
+      [length]="bookList.length"
+      [pageIndex] = "pageIndex"
+      [pageSize]="16"
+      [pageSizeOptions]="[16, 32, 100]"
+      (page)="pageEvent = handlePage($event)"
+      >
+    </mat-paginator>
+    <!-- <button><mat-icon>arrow_forward_ios</mat-icon></button>
+    <button><mat-icon>arrow_back_ios</mat-icon></button> -->
+  </div>
+</div>
+  

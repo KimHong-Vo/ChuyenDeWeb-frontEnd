@@ -1,0 +1,38 @@
+<div class="page-top" style="width:100%;height: 15px;background-color: #f46b42"></div>
+<nav id="navbar" class="navbar  bg-dark" style="height: fit-content; padding-top:0px;padding-bottom: 0px; z-index: 100;">
+  <div id="navTop" class="navbar">
+      <ul id="navtopUL" >
+        <mat-grid-list cols="4" rowHeight="5:1">
+          <mat-grid-tile colspan="1">
+            <a class="pointer" routerLink="/home">Book Store</a>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2">
+            <form (submit)="onSearchByTitle()" >
+                <input  [(ngModel)]="keyWord"
+                      placeholder="Search By Title..." name="SearchByTitle">
+              <button mat-mini-fab color="primary"><mat-icon aria-hidden="false">search</mat-icon></button>
+                
+            </form>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1">
+            <a routerLink="/myAccount" *ngIf="! loggedIn">MY ACCOUNT</a>
+            <a routerLink="/shoppingCart" *ngIf="loggedIn">SHOPPING CART</a>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </ul>
+  </div>
+  <div id="navBottom" class="navbar">
+    <ul class="nav navbar-expand">
+      <li class="dropdown">
+        <a class="pointer">Book</a>
+        <div class="dropdown-content">
+          <a routerLink="/book-list">All book</a>
+          <a href="#">Light novel</a>
+          <a href="#">Manga</a>
+        </div>
+      </li>
+      <li class="navbar" *ngIf="loggedIn"><a routerLink="/myProfile">MY PROFILE</a></li>
+      <li class="navbar" *ngIf="loggedIn"><a style="color: #007bff" class="pointer" (click)="logout()">LOGOUT</a></li>
+    </ul>
+  </div>
+</nav>
