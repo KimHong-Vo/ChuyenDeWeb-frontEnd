@@ -1,6 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { browerSize } from 'src/app/constants/browerSize';
 import { Book } from 'src/app/models/book';
+import { BookService } from 'src/app/services/book.service';
 
 @Component({
   selector: 'app-book-detail',
@@ -13,8 +16,8 @@ export class BookDetailComponent implements OnInit {
   numberDetailCol: number=1;
   numberPriceCol: number=1;
   book: Book = new Book();
-  constructor() { 
-    this.setCols();
+  idBook:string = "";
+  constructor(private bs:BookService, private route: Router, private router:ActivatedRoute){
   }
 
   @HostListener('window:resize') onResizeBrowser(){
@@ -41,13 +44,23 @@ export class BookDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.book.author = 'Kim';
-    this.book.title = 'Explore the new world with Tomy';
-    this.book.id= 123;
-    this.book.ourPrice = 200000;
-    this.book.listPrice = 240000;
-    this.book.description = 'Have you ever thougth that has another world in our infinity space? This book will tell you'+
-                            'the world of Tomy, he can see it explicit when he fall in sleep, let come and explore the new world';
-  }
+    // this.book.author = 'Kim';
+    // this.book.title = 'Explore the new world with Tomy';
+    // this.book.id= 123;
+    // this.book.ourPrice = 200000;
+    // this.book.listPrice = 240000;
+    // this.book.description = 'Have you ever thougth that has another world in our infinity space? This book will tell you'+
+    //                         'the world of Tomy, he can see it explicit when he fall in sleep, let come and explore the new world';
+
+    this.router.params.subscribe(
+       params => this.idBook= params['id']);
+       this.bs.getBookById(this.idBook).subscribe((respone:Book)=>{
+         this.book = respone;
+       }, (error:HttpErrorResponse)=>{
+        alert("Loi dong 57");
+       })
+
+    }
+
 
 }

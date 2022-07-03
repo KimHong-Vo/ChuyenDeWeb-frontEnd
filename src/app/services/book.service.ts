@@ -9,7 +9,7 @@ import { Book } from '../models/book';
 })
 export class BookService {
   apiBaseUrl = environment.apiBaseUrl;
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     console.log(this.apiBaseUrl);
   }
 
@@ -32,5 +32,9 @@ export class BookService {
   //async for searching book
   public suggestKeyWords(originWord: string): Observable<String>{
     return this.http.get<String>(this.apiBaseUrl+'/book/suggessKeyWord?originWord=' + originWord);
+  }
+  //lấy book theo id
+  public getBookById(id:string):Observable<Book>{
+    return this.http.get<Book>(this.apiBaseUrl+'/book/'+id);
   }
 }
