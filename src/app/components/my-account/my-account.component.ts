@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class MyAccountComponent implements OnInit {
   email = new FormControl("", [Validators.required, Validators.email]);
   passWord = new FormControl();
   hide = true;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private route: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,10 +24,11 @@ export class MyAccountComponent implements OnInit {
       console.log(error.getErrorMessage());
     })
     if(this.userService.validateLogin()){
-      console.log("Fail to login");
+      console.log(this.userService.user.email);
+      this.route.navigateByUrl("/");
     }
     else{
-      console.log(this.userService.user.firstName);
+      console.log("Fail to login"); 
     }
   }
   getErrorMessage() {

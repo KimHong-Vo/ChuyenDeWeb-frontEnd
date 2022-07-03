@@ -2,14 +2,13 @@ import {UserPayment} from "./user-payment";
 import {UserShipping} from "./user-shipping";
 
 export interface User {
-  id: number;
-  firstName: string;
-  lastName: string;
+  email: string;
   username: string;
   password: string;
-  email: string
+  firstName: string;
+  lastName: string;
   phone: string;
   enabled: boolean;
-  userPayments: UserPayment[];
-  userShippingList: UserShipping[];
+  // userPayments: UserPayment[];
+  // userShippingList: UserShipping[];
 }

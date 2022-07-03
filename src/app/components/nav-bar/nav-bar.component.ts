@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Book } from 'src/app/models/book';
+import { User } from 'src/app/models/user';
 import { BookService } from 'src/app/services/book.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,7 +15,7 @@ export class NavBarComponent implements OnInit {
   books: Book[] = [];
   keyWord: string = '';
   navbar = document.getElementById("navbar");
-  constructor(private bookService: BookService, private router: Router) {
+  constructor(private bookService: BookService, private router: Router, private uService: UserService) {
 
     // add listener for sticky navigation
     document.addEventListener('DOMContentLoaded', function name() {
