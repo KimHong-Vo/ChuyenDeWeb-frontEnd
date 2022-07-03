@@ -4,7 +4,11 @@ import { BookDetailComponent } from './components/book-detail/book-detail.compon
 import { BookListComponent } from './components/book-list/book-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
+
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+
 
 const routes: Routes = [
   {
@@ -29,9 +33,13 @@ const routes: Routes = [
     component: MyAccountComponent
   },
   {
+
     path: 'order-summary',
     component: OrderSummaryComponent
-  }
+
+    path: 'shoppingCart',
+    component: ShoppingCartComponent
+
 ];
 
 @NgModule({
