@@ -13,7 +13,7 @@ import { HttpClientModule} from '@angular/common/http';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule} from '@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
@@ -50,7 +50,8 @@ import { OrderSummaryComponent } from './components/order-summary/order-summary.
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatPaginatorModule 
+    MatPaginatorModule, 
+    ReactiveFormsModule
  
   ],
   providers: [],
