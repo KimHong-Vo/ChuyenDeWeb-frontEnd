@@ -1,1 +1,132 @@
-<p>shopping-cart works!</p>
+<div class="container">
+  <div
+    style="
+      align-items: center;
+      padding-left: 5%;
+      padding-right: 5%;
+      margin-top: 5%;
+      overflow: auto;
+    "
+  >
+    <div style="position: absolute; width: 27%">
+      <img
+        src="../../../assets/images/logo.png"
+        class="img-responsive right"
+        style="width: 100%"
+      />
+    </div>
+    <div style="position: absolute; z-index: -2; width: 90%">
+      <img
+        src="../../../assets/images/wood.png"
+        class="img-responsive right"
+        style="width: 100%; padding-top: 10%"
+      />
+    </div>
+  </div>
+  <div style="margin-top: 22%; text-align: center">
+    <h2 class="section-headline"><span>Your Cart</span></h2>
+  </div>
+  <div style="margin: 2% 10%">
+    <!-- tieu de bang cart -->
+    <mat-grid-list cols="12" rowHeight="50px">
+      <mat-grid-tile colspan="7">
+        <span style="position: absolute; left: 10px; bottom: 0px"
+          ><h2>Products</h2></span
+        >
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <span style="position: absolute; left: 10px; bottom: 0px"
+          ><h2>Quantities</h2></span
+        >
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <span style="position: absolute; left: 10px; bottom: 0px"
+          ><h2>Price</h2></span
+        >
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <span style="position: absolute; left: 10px; bottom: 0px"
+          ><h2>Remove</h2></span
+        >
+      </mat-grid-tile>
+    </mat-grid-list>
+    <hr
+      style="border: none; height: 2px; color: #333; background-color: #333"
+    />
+    <!-- noi dung ban cart -->
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile colspan="2">
+        <span style="position: absolute; left: 0px; bottom: 0px"
+          ><a mat-button
+            ><img
+              class="img-thumbnail"
+              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+              style="width: 70%;" /></a
+        ></span>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="5">
+        <div style="position: absolute; left: 0px; bottom: 40px"
+          ><a class="pointer">
+            <h4><strong>Sach nuoi cho</strong></h4></a
+          ></div
+        >
+        <div style="position: absolute; left: 0px; bottom:10px"
+          ><a class="pointer">
+            <h4><strong>Giá: 70000VND</strong></h4></a
+          ></div
+        >
+        <!-- <p style="color:green;">In Stock
+          210</p>
+        <p  style="color:green;">Only
+          <span>9</span> In Stock</p> -->
+        <!-- <p  style="color:darkred;">Product Unavailable</p> -->
+        <!-- <a class="pointer">delete</a> -->
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <span style="position: absolute; left: 30px; bottom: 10px"
+          ><h2>
+            <input type="number" name="quantiti" id="id" [(ngModel)]="quan" (change)="change()" style="width: 70%;" min="1" [max]="(max)">
+          </h2></span
+        >
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <span style="position: absolute; left: 10px; bottom: 10px"
+          ><a><h2>100000VND</h2></a></span
+        >
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <span style="position: absolute; left: 35px; bottom: 10px"
+          ><h2 style="color: red;"><mat-icon>delete</mat-icon></h2></span
+        >
+      </mat-grid-tile>
+    </mat-grid-list>
+    <hr
+      style="border: none; height: 1px; color: #333; background-color: #333"
+    />
+    <!-- total cart -->
+
+    <div style="text-align: right;  margin-top: 15px;">
+      <span
+          ><strong style="font-size: medium"
+            >Total Price (<span>n</span> items): </strong
+          >
+          <span style="color: #db3208; font-size: medium"
+        >100000VND</span
+      ></span
+        >
+    </div>
+    <!-- dieu huong -->
+        <div style="text-align: right; margin-top: 15px;">
+          <span style="width: 20%;"
+          ><a mat-raised-button class="mat-warn" routerLink="/book-list"
+            >Continue Shopping</a>
+          </span>
+        <span style="margin-left: 3%;"></span>
+        <span style="width: 20%;"><a mat-raised-button class="mat-warn" routerLink="#"
+            >Check Out</a>
+        </span>
+        </div>
+  </div>
+  <div style="height: 500px"></div>
+</div>
