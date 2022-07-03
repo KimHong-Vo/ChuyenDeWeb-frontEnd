@@ -3,8 +3,10 @@
   <div id="navTop" class="navbar">
       <ul id="navtopUL" >
         <mat-grid-list cols="4" rowHeight="5:1">
-          <mat-grid-tile colspan="1">
-            <a class="pointer" routerLink="/home">Book Store</a>
+          <mat-grid-tile colspan="1" >
+                <a class="pointer" routerLink="/home" style="width:100% ; height:100% ; text-align: center;" >
+                    <img src="../../../assets/images/logoHome.png" class="img-responsive right" style="width: 50%; padding-top: 4%;"/>
+                </a>
           </mat-grid-tile>
           <mat-grid-tile colspan="2">
             <form (submit)="onSearchByTitle()" >
