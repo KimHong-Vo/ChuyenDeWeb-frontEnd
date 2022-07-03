@@ -1,1 +1,90 @@
-<p>order-summary works!</p>
+<div class="container" >
+    <div style="align-items: center; padding-left: 5%; padding-right: 5%; margin-top: 5%; overflow: auto;">
+      <div style="position: absolute; width: 27%;">
+        <img src="../../../assets/images/logo.png" class="img-responsive right" style="width:100%; "/>
+      </div>
+      <div style="position: absolute; z-index: -2; width: 90%;">
+        <img src="../../../assets/images/wood.png" class="img-responsive right"
+           style="width: 100%; padding-top: 10%;"/>
+      </div>
+    </div>
+    <div style="margin-top: 22%; text-align: center;" >
+      <h2 class="section-headline"><span>My Profile</span></h2>
+    </div>
+
+    <!-- <div style="margin:2% 10%;">
+        <mat-grid-list cols="{{numberItemOnCol}}" rowHeight="2:3" gutterSize="10px">
+          <mat-grid-tile *ngFor="let book of bookList" >
+            <mat-card style="border-color: #38444d !important;">
+              <img mac:\Users\letan\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\code\electron-browser\workbench\workbench.htmlt-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="photo off shiba dog">
+              <mat-card-content >
+                <p>{{book.author}}</p>
+                <p>price:--------$</p>
+              </mat-card-content>
+              <mat-card-actions align="end">
+                <button mat-button><mat-icon>visibility</mat-icon></button>
+                <button mat-button><mat-icon>shopping_cart</mat-icon></button>
+              </mat-card-actions>
+            </mat-card>
+          </mat-grid-tile>
+        </mat-grid-list>
+    </div> -->
+
+    <div style="margin:2% 10%;">
+      <mat-grid-list cols="1" rowHeight="100px">
+        <mat-grid-tile class="alert alert-success">
+          <h3><i class="fa fa-check" style="color:limegreen;"></i> Thank you, your order has been placed. </h3>
+          <h4>The estimated delivery date is <span>{{estimatedDeliveryDate}}</span></h4>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <div>
+        <h3>List of Items :</h3>
+      </div>
+      
+      <mat-grid-list cols="12" *ngFor="let cartItem of cartItemList">
+        <hr/>
+        <mat-grid-tile colspan="2">
+          <a mat-button (click)="onSelectBook(cartItem.book)">
+            <!-- <img class="img-thumbnail" src="http://localhost:8080/image/book/{{cartItem.book.id}}.png" style="width:70px;" /> -->
+            <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="photo off shiba dog">
+        </a>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="6">
+            <div style="cursor: pointer; width: 100%; display: flex; flex-direction: row; justify-content: space-evenly;">
+                <a class="pointer" (click)="onSelectBook(cartItem.book)">
+                    <p style="margin-bottom: 0;">{{cartItem.book.title}}</p>
+                </a>
+        
+                <p *ngIf="cartItem.book.inStockNumber > 10" style="color:green; margin-bottom: 0;">In Stock</p>
+        
+                <p *ngIf="cartItem.book.inStockNumber < 10 && cartItem.book.inStockNumber > 0"
+                    style="color:green; margin-bottom: 0;">
+                    Only <span>{{cartItem.book.inStockNumber}}</span> In Stock</p>
+        
+                <p *ngIf="cartItem.book.inStockNumber == 0" style="color:darkred; margin-bottom: 0;">Product Unavailable</p>
+        
+                <a class="pointer" (click)="onRemoveCartItem(cartItem)">delete</a>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="2">
+          <h5 style="color:#db3208; font-size:large;">$<span
+            [ngClass]="{'text-strike': cartItem.book.inStockNumber == 0}">{{cartItem.book.ourPrice}}</span>
+          </h5>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="2" style="text-align: center;">
+          <h5 style="font-size: large">{{cartItem.qty}}</h5>
+        </mat-grid-tile>
+      </mat-grid-list>
+  
+    </div>
+  
+  
+  </div>
+  
+  <div style="padding-top: 100px;">
+
+  </div>
