@@ -35,10 +35,10 @@ const routes: Routes = [
   {
 
     path: 'order-summary',
-    component: OrderSummaryComponent
+    component: OrderSummaryComponent},
 
-    path: 'shoppingCart',
-    component: ShoppingCartComponent
+    {path: 'shoppingCart',
+    component: ShoppingCartComponent}
 
 ];
 
