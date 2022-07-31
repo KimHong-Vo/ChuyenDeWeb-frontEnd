@@ -11,34 +11,37 @@
     <div style="margin-top: 22%; text-align: center;" >
       <h2 class="section-headline"><span>Book list</span></h2>
     </div>
-    <div style="margin:2% 10%;">
-      <mat-grid-list cols="{{numberItemOnCol}}" rowHeight="2:3" gutterSize="10px">
-        <mat-grid-tile *ngFor="let book of bookList" >
-          <mat-card style="border-color: #38444d !important;">
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="photo off shiba dog">
-            <mat-card-content >
-              <p>{{book.author}}</p>
-              <p>price:--------$</p>
-            </mat-card-content>
-            <mat-card-actions align="end">
-              <button mat-button><mat-icon>visibility</mat-icon></button>
-              <button mat-button><mat-icon>shopping_cart</mat-icon></button>
-            </mat-card-actions>
-          </mat-card>
-        </mat-grid-tile>
-      </mat-grid-list>
-  </div>
-  <div >
-    <mat-paginator
-      [length]="bookList.length"
-      [pageIndex] = "pageIndex"
-      [pageSize]="16"
-      [pageSizeOptions]="[16, 32, 100]"
-      (page)="pageEvent = handlePage($event)"
-      >
-    </mat-paginator>
-    <!-- <button><mat-icon>arrow_forward_ios</mat-icon></button>
-    <button><mat-icon>arrow_back_ios</mat-icon></button> -->
+    <button (click)="addProduct()">click to add product</button>
+    <div class="content">
+      <div style="margin:2% 10%;">
+        <mat-grid-list cols="{{numberItemOnCol}}" rowHeight="2:3" gutterSize="10px">
+          <mat-grid-tile *ngFor="let book of bookList" >
+            <mat-card style="border-color: #38444d !important;">
+              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="photo off shiba dog">
+              <mat-card-content >
+                <p>{{book.author}}</p>
+                <p>price:--------$</p>
+              </mat-card-content>
+              <mat-card-actions align="end">
+                <button mat-button><mat-icon>visibility</mat-icon></button>
+                <button mat-button><mat-icon>shopping_cart</mat-icon></button>
+              </mat-card-actions>
+            </mat-card>
+          </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <div >
+      <mat-paginator
+        [length]="bookList.length"
+        [pageIndex] = "pageIndex"
+        [pageSize]="16"
+        [pageSizeOptions]="[16, 32, 100]"
+        (page)="pageEvent = handlePage($event)"
+        >
+      </mat-paginator>
+      <!-- <button><mat-icon>arrow_forward_ios</mat-icon></button>
+      <button><mat-icon>arrow_back_ios</mat-icon></button> -->
+    </div>
   </div>
 </div>
   

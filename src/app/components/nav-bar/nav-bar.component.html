@@ -1,4 +1,4 @@
-<div class="page-top" style="width:100%;height: 15px;background-color: #f46b42"></div>
+<div class="page-top" style="width:100%;height: 20px;background-color: #f46b42"><p>{{time | async}}</p></div>
 <nav id="navbar" class="navbar  bg-dark" style="height: fit-content; padding-top:0px;padding-bottom: 0px; z-index: 100;">
   <div id="navTop" class="navbar">
       <ul id="navtopUL" >
@@ -17,8 +17,17 @@
             </form>
           </mat-grid-tile>
           <mat-grid-tile colspan="1">
-            <a routerLink="/myAccount" *ngIf="! loggedIn">MY ACCOUNT</a>
-            <a routerLink="/shoppingCart" *ngIf="loggedIn">SHOPPING CART</a>
+            <div *ngIf="!(user$|async)">
+              <a class="account" routerLink="/my-account">LOG IN</a> 
+              <a class="account" routerLink="/myAccount">SIGN UP</a>
+            </div>
+            <div *ngIf="user$ | async as user">
+              <a class="account" routerLink="/myAccount">{{user.username}}</a>|&nbsp;
+              <a  class="account" (click)="onClickLogout()">Logout</a>
+              <a class="account" routerLink="/shoppingCart">
+                <mat-icon>shopping_cart</mat-icon>
+              </a>
+            </div>     
           </mat-grid-tile>
         </mat-grid-list>
       </ul>
@@ -33,8 +42,14 @@
           <a href="#">Manga</a>
         </div>
       </li>
-      <li class="navbar" *ngIf="loggedIn"><a routerLink="/myProfile">MY PROFILE</a></li>
-      <li class="navbar" *ngIf="loggedIn"><a style="color: #007bff" class="pointer" (click)="logout()">LOGOUT</a></li>
+      <!-- <li class="navbar" *ngIf="loggedIn"><a routerLink="/myProfile">MY PROFILE</a></li> -->
     </ul>
   </div>
 </nav>
+<div class="logOutDialog" id="logout">
+  <div id="model-content">
+  <p>Bạn có chắc muốn đăng xuất không?</p>
+  <button mat-raised-button color="warn" (click)="logout()">Có</button>
+  <button mat-raised-button color="primary" style="float: right;" (click)="closeLogoutDialog()" >Không</button>
+  </div>
+</div>

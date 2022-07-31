@@ -1,5 +1,5 @@
 <div class="container">
-  <div style="align-items: center; padding-left: 5%; padding-right: 5%; margin-top: 5%; overflow: auto;">
+  <!-- <div style="align-items: center; padding-left: 5%; padding-right: 5%; margin-top: 5%; overflow: auto;">
     <div style="position: absolute; width: 27%;">
       <img src="../../../assets/images/logo.png" class="img-responsive right" style="width:100%; "/>
     </div>
@@ -7,9 +7,9 @@
       <img src="../../../assets/images/wood.png" class="img-responsive right"
          style="width: 100%; padding-top: 10%;"/>
     </div>
-  </div>
-  <div style="margin-top: 22%; text-align: center;" >
-    <h2 class="section-headline"><span>Book list</span></h2>
+  </div> -->
+  <div style="margin-top: 3%; text-align: center;" >
+    <h2 class="section-headline"><span>My Account</span></h2>
   </div>
   <div class="body" style="margin:2% 5% ;">
       <mat-tab-group>
@@ -40,9 +40,59 @@
               </div>
           </mat-tab>
           <mat-tab label="New account">
-              <div style="margin-top: 20px;">
-                  <form >
-                      
+              <div style="margin-top: 20px; text-align: center;">
+<!--REGISTERFORM-->
+                  <form style="padding:2% ; border-radius: 5%;"
+                    [formGroup]="registerForm"
+                    (submit)="onRegister()"
+                  >
+                    <div class="formControl">
+                      <mat-form-field appearance="fill" style="width: 60%;">
+                        <mat-label>Enter your email</mat-label>       
+                        <input matInput placeholder="pat@example.com" #remail  required>  
+                        <mat-error 
+                        *ngIf="registerForm.hasError('remail',['email'])&&
+                        registerForm.get('remail')?.touched">{{getErrorMessage()}}</mat-error>
+                      </mat-form-field>
+                    </div>
+                    
+                    <div class="formControl">
+                      <mat-form-field appearance="fill" style="width: 60%;">
+                        <mat-label>Enter your full name</mat-label>       
+                        <input matInput placeholder="full name" #rfullName id="fullName" type="text"
+                         formControlName="rfullName"  required>  
+                       
+                      </mat-form-field>
+                    </div>
+
+                    <div class="formControl" style="margin-top: 15px ;">
+                      <mat-form-field appearance="fill" style="width: 60%;">
+                        <mat-label>Enter your password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" #rpassWord id="password" placeholder="enter password">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="formControl" style="margin-top: 15px ;">
+                      <mat-form-field appearance="fill" style="width: 60%;">
+                        <mat-label>Confirm your password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'"
+                         #rconfirmPassword
+                        id="confirm-password"
+                        formControlName="rconfirmPassword"
+                        placeholder="confirm your password">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                      </mat-form-field>
+                    </div>
+
+                    <div>
+                      <button class="loginBtn" type="submit" mat-raised-button color="primary">Submit</button>
+                    </div>
+
                   </form>
               </div>
           </mat-tab>

@@ -56,4 +56,11 @@ export class BookListComponent implements OnInit {
     return e;
   }
 
+  public addProduct(){
+    this.bookList.push({id: 125, title: 'book added', author: 'kim', active: true, ationDate: '', category:'', description:'hello',
+    format:'', inStockNumber:10, isbn:'', language:'VN', listPrice:86000, numberOfPages:200, ourPrice:94000,
+    publisher:'', shippingWeight:1});
+    console.log("book size: " + this.bookList.length);
+  }
+
 }

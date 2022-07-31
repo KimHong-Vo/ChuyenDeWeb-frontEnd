@@ -9,7 +9,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -23,6 +23,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { TokenInterceptor } from './token.interceptor';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { OrderSummaryComponent } from './components/order-summary/order-summary.
     ReactiveFormsModule
  
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
