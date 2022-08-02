@@ -72,7 +72,7 @@ export class NavBarComponent implements OnInit {
     document.getElementById('logout')!.style.display = "none";
   }
   public onSearchByTitle(){
-
+    this.router.navigate(['book-list', this.keyWord]);
   }
 
 

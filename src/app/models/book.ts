@@ -15,4 +15,5 @@ export class Book { // interface
     active!: boolean;
     description!: string;
     inStockNumber!: number;
+    picturePath!: string;
 }

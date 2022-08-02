@@ -21,7 +21,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'book-list',
+    path: 'book-list/:title',
     component: BookListComponent
   },
   {

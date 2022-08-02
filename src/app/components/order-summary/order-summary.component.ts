@@ -35,6 +35,7 @@ export class OrderSummaryComponent {
       active: true,
       description: "good book",
       inStockNumber: 6,
+      picturePath: ""
   },
     // shoppingCart: {
     //   id: 15,

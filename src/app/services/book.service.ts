@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Book } from '../models/book';
+import { BookFilterRequest } from '../requests/bookFilterRequest';
+import { BookFilterResponse } from '../responses/bookFilterResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +19,8 @@ export class BookService {
     return this.http.get<Book[]>(this.apiBaseUrl+'/book/book-list');
   }
 
-  public getBooksWithLimit(limit: number, startIndex: number): Observable<Book[]>{
-    return this.http.get<Book[]>(this.apiBaseUrl+'/book/book-list?page=' + startIndex + '&length=' + limit);
+  public getBooksWithLimit(bookFilter: BookFilterRequest): Observable<BookFilterResponse>{
+    return this.http.post<BookFilterResponse>(this.apiBaseUrl+'/book/books/filter', bookFilter);
   }
 
   public addBook(book: Book): Observable<Book>{
