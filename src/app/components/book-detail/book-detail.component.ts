@@ -43,6 +43,7 @@ export class BookDetailComponent implements OnInit {
     }
   }
 
+
   ngOnInit(): void {
     // this.book.author = 'Kim';
     // this.book.title = 'Explore the new world with Tomy';
@@ -51,7 +52,9 @@ export class BookDetailComponent implements OnInit {
     // this.book.listPrice = 240000;
     // this.book.description = 'Have you ever thougth that has another world in our infinity space? This book will tell you'+
     //                         'the world of Tomy, he can see it explicit when he fall in sleep, let come and explore the new world';
-
+    // this.book ={id: 123, title: 'book 1', author: 'kim', active: true, ationDate: '', category:'', description:'hello',
+    // format:'', inStockNumber:0, isbn:'', language:'VN', listPrice:86000, numberOfPages:200, ourPrice:94000,
+    // publisher:'', shippingWeight:1};
     this.router.params.subscribe(
        params => this.idBook= params['id']);
        this.bs.getBookById(this.idBook).subscribe((respone:Book)=>{
@@ -59,8 +62,7 @@ export class BookDetailComponent implements OnInit {
        }, (error:HttpErrorResponse)=>{
         alert("Loi dong 57");
        })
+    // }
 
-    }
-
-
+  }
 }

@@ -1,4 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Cart } from 'src/app/models/cart';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,9 +14,18 @@ export class ShoppingCartComponent implements OnInit {
   item_qty: number=0;
   quan =1;
   max =5;
-  constructor() { }
+  idUser:string="";
+  c:Cart=new Cart();
+  constructor(private cart:CartService, private route: Router, private router:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.router.params.subscribe(
+      params => this.idUser= params['id']);
+      this.cart.loadCart(this.idUser).subscribe((respone:Cart)=>{
+        this.c= respone;
+      }, (error:HttpErrorResponse)=>{
+       alert("Loi dong 27");
+      })
   }
   incrementQty(){
     this.item_qty += 1;

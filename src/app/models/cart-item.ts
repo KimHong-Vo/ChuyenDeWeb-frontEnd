@@ -1,11 +1,12 @@
+import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 import { Book } from './book';
 import { ShoppingCart } from './shopping-cart';
 
-export interface CartItem {
-  id: number;
-  subtotal: number;
-  qty: number;
-  book: Book;
+export class CartItem {
+  id: number=0;
+  subtotal: number=0;
+  qty: number=0;
+  book: Book=new Book();
   // shoppingCart: ShoppingCart
-  toUpdate: boolean;
+  toUpdate: boolean=false;
 }
