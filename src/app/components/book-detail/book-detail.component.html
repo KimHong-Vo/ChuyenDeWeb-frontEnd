@@ -14,7 +14,7 @@
     <div class="content" style="margin:2% 10%;">
         <mat-grid-list cols="{{numberGridCols}}">
             <mat-grid-tile [colspan]="(numberBookPicCol)">
-                <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="shiba dog" style="width:100% ; height: 100%;">
+                <img [src]="'http://localhost:8080' + book.picturePath" alt="photo" style="width:100% ; height: 100%;">
             </mat-grid-tile>
             <mat-grid-tile [colspan]="(numberDetailCol)">
                 <div style="width:100% ; height:100% ; padding:5% 5% ;">
