@@ -39,4 +39,7 @@ export class BookService {
   public getBookById(id:string):Observable<Book>{
     return this.http.get<Book>(this.apiBaseUrl+'/book/'+id);
   }
+  searchBookByTitle(term: string): Observable<Book[]> {
+    return this.http.post<Book[]>(`${this.apiBaseUrl}/book/searchBook`, term, {responseType: 'json'});
+  }
 }

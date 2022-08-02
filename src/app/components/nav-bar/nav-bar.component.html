@@ -8,14 +8,25 @@
                     <img src="../../../assets/images/logoHome.png" class="img-responsive right" style="width: 50%; padding-top: 4%;"/>
                 </a>
           </mat-grid-tile>
+
           <mat-grid-tile colspan="2">
-            <form (submit)="onSearchByTitle()" >
-                <input  [(ngModel)]="keyWord"
-                      placeholder="Search By Title..." name="SearchByTitle">
-              <button mat-mini-fab color="primary"><mat-icon aria-hidden="false">search</mat-icon></button>
-                
+            <form (submit)="onSearchByTitleByForm()">
+              <input #SearchByTitle placeholder="Search By Title..." (input)="onSearchByTitleByInput(SearchByTitle.value)"
+              [matAutocomplete]="auto">
+  
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let book of books$ | async" 
+                  [innerHtml]="book.title | highlightSearch:SearchByTitle.value"
+                  routerLink="/book-list/{{book.title}}">
+                </mat-option>
+              </mat-autocomplete>
+  
+              <button mat-mini-fab color="primary" (click)="onSearchByTitleByForm()">
+                <mat-icon aria-hidden="false">search</mat-icon>
+              </button>
             </form>
           </mat-grid-tile>
+
           <mat-grid-tile colspan="1">
             <div *ngIf="!(user$|async)">
               <a class="account" routerLink="/my-account">LOG IN</a> 

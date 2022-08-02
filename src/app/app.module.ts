@@ -24,6 +24,8 @@ import { BookDetailComponent } from './components/book-detail/book-detail.compon
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 import { TokenInterceptor } from './token.interceptor';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { HighlightSearchPipe } from './shared/pipe/HighlightSearch.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { TokenInterceptor } from './token.interceptor';
     MyAccountComponent,
     BookDetailComponent,
     ShoppingCartComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    HighlightSearchPipe
   ],
   imports: [
     BrowserModule,
@@ -52,8 +55,8 @@ import { TokenInterceptor } from './token.interceptor';
     MatButtonModule,
     MatCardModule,
     MatPaginatorModule, 
-    ReactiveFormsModule
- 
+    ReactiveFormsModule,
+    MatAutocompleteModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi:true}],
   bootstrap: [AppComponent]

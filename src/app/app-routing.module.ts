@@ -21,6 +21,10 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'book-list',
+    component: BookListComponent
+  },
+  {
     path: 'book-list/:title',
     component: BookListComponent
   },
