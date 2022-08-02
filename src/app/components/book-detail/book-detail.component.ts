@@ -18,6 +18,7 @@ export class BookDetailComponent implements OnInit {
   book: Book = new Book();
   idBook:string = "";
   constructor(private bs:BookService, private route: Router, private router:ActivatedRoute){
+    this.setCols();
   }
 
   @HostListener('window:resize') onResizeBrowser(){
