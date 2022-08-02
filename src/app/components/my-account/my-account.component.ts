@@ -63,7 +63,7 @@ export class MyAccountComponent implements OnInit {
       this.route.navigateByUrl("/");
     }
     else{
-      console.log("Fail to login"); 
+      console.log("Fail to login");
     }
   }
   getErrorMessage() {
