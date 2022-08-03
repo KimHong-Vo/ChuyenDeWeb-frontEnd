@@ -80,7 +80,8 @@ export class NavBarComponent implements OnInit {
     this.uService.removeJWT();
     this.closeLogoutDialog();
   }
-  public closeLogoutDialog() {
+  
+  public  closeLogoutDialog(){
     document.getElementById('logout')!.style.display = "none";
   }
   public onSearchByTitleByForm() {

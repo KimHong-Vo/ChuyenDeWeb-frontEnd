@@ -3,25 +3,39 @@
       <h2 class="section-headline"><span>Book list</span></h2>
     </div>
     <div class="content">
+      <div style="margin:2% 10%; padding-bottom: 1px; border-bottom: solid 1px #626b72;">
+        <h3>Order book list</h3>
+        <select [(ngModel)]="order" id="select" (ngModelChange)="handleOrder()">
+          <option [ngValue]="orderOption[0]" >
+            Ascending
+          </option>
+          <option [ngValue]="orderOption[1]">
+            Decrease
+          </option>
+        </select>
+      </div>
       <div style="margin:2% 10%;" *ngIf="(bookList$ | async) as books">
         <mat-grid-list cols="{{numberItemOnCol}}" rowHeight="2:3" gutterSize="10px">
-          <mat-grid-tile *ngFor="let book of books" >
-            <mat-card style="border-color: #38444d !important; width:80% ;">
-              <img mat-card-image [src]="'http://localhost:8080' + book.picturePath" alt="photo">
-              <mat-card-content >
-                <p>{{book.title}}</p>
-                <p>{{book.author}}</p>
-                <p>price:{{book.listPrice}}$</p>
-              </mat-card-content>
-              <mat-card-actions align="end">
-                <button mat-button><mat-icon>visibility</mat-icon></button>
-                <button mat-button><mat-icon>shopping_cart</mat-icon></button>
-              </mat-card-actions>
-            </mat-card>
+
+          <mat-grid-tile *ngFor="let book of books" style="width: 100%;">
+            <div (click)="onSelectBook(book)" style="width: 100%;">
+              <mat-card  style="border-color: #38444d !important; width: 75%;">
+                <img mat-card-image [src]="'http://localhost:8080' + book.picturePath" alt="photo">
+                <mat-card-content >
+                  <h3>{{book.title}}</h3>
+                  <p>Author: {{book.author}}</p>
+                  <p>price: {{book.ourPrice | currency:"USD"}}</p>
+                </mat-card-content>
+                <mat-card-actions align="end">
+                  <button mat-button><mat-icon>visibility</mat-icon></button>
+                  <button mat-button><mat-icon>shopping_cart</mat-icon></button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
           </mat-grid-tile>
         </mat-grid-list>
     </div>
-    <div >
+    <div style="margin-top:15px ;">
       <mat-paginator
         [length]="totalItem"
         [pageIndex] = "filter.pageIndex"

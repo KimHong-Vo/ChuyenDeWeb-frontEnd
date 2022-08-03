@@ -47,4 +47,8 @@ export class UserService {
     this.userBehavior.next(null);
     window.localStorage.removeItem('JWT_id');
   }
+
+  public isEmailExist(email:string):Observable<boolean>{
+    return this.http.get<boolean>(environment.apiBaseUrl + '/user/checkExistEmail/' + email);
+  }
 }

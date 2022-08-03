@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, takeUntil } from 'rxjs';
 import { browerSize } from 'src/app/constants/browerSize';
 import { Book } from 'src/app/models/book';
 import { BookFilterRequest } from 'src/app/requests/bookFilterRequest';
@@ -23,18 +23,22 @@ export class BookListComponent implements OnInit {
   pageEvent?: PageEvent = new PageEvent();
   filter: BookFilterRequest = new BookFilterRequest();
   totalItem: number =0;
+  orderOption = [0, 1];
+  order: number = 0;
   constructor(private bookService: BookService, private http : HttpClient, private router: Router, private route: ActivatedRoute) {
     this.filter.pageIndex = 0;
     this.filter.pageSize= 16;
-    console.log("path title param = " + route.snapshot.params['title']);
-    this.filter.titlePart = route.snapshot.params['title'];
-    this.filter.orderPriceFilter=1;
+    // console.log("path title param = " + route.snapshot.params['title']);
+    this.filter.orderPriceFilter=this.order;
     this.bookList$  = this.bookListBehavior.asObservable();
   }
-
+  
   ngOnInit(): void {
     //set number item per one column
-    this.getBook();
+    this.route.url.subscribe(url=>{
+      this.getBook();
+    })
+    
     // this.bookList = [{id: 123, title: 'book 1', author: 'kim', active: true, ationDate: '', category:'', description:'hello',
     //                   format:'', inStockNumber:10, isbn:'', language:'VN', listPrice:86000, numberOfPages:200, ourPrice:94000,
     //                   publisher:'', shippingWeight:1},
@@ -68,9 +72,16 @@ export class BookListComponent implements OnInit {
     this.getBook();
     return e;
   }
+  public handleOrder(){
+    console.log("orrder: " + this.order);
+    
+    this.filter.orderPriceFilter = this.order;
+    this.getBook();
+  }
 
   public async getBook(){
-    this.bookService.getBooksWithLimit(this.filter).subscribe(response =>{
+    this.filter.titlePart = await this.route.snapshot.params['title'];
+    await this.bookService.getBooksWithLimit(this.filter).subscribe(response =>{
       this.bookListBehavior.next( response.books);
       this.totalItem = response.totalItem;
       // this.bookList$.forEach(b =>{console.log("hello")})

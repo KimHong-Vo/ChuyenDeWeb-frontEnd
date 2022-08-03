@@ -19,23 +19,24 @@
                     <div class="formControl">
                       <mat-form-field appearance="fill" style="width: 60%;">
                         <mat-label>Enter your email</mat-label>       
-                        <input matInput placeholder="pat@example.com" [formControl]="email"  required>  
-                        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                        <input matInput placeholder="pat@example.com" [formControl]="email">  
+                        <mat-error *ngIf="email.invalid">{{getLoginEMailErrorMessage()}}</mat-error>
                       </mat-form-field>
                     </div>
 
                     <div class="formControl" style="margin-top: 15px ;">
                       <mat-form-field appearance="fill" style="width: 60%;">
                         <mat-label>Enter your password</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'" [formControl] = "passWord">
-                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </button>
+                        <input matInput [type]="hide? 'password' : 'text'" [formControl] = "passWord">
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        <mat-error *ngIf="passWord.invalid">{{getLoginPasswordErrorMessage()}}</mat-error>
                       </mat-form-field>
                     </div>
-                    <div>
+                    <button *ngIf="email.invalid || passWord.invalid; else enableButton" class="loginBtn" type="submit" mat-raised-button color="primary" disabled="true">Submit</button>
+                    <ng-template #enableButton>
                       <button class="loginBtn" type="submit" mat-raised-button color="primary">Submit</button>
-                    </div>
+                    </ng-template>
+                      
                   </form>
               </div>
           </mat-tab>
@@ -49,43 +50,51 @@
                     <div class="formControl">
                       <mat-form-field appearance="fill" style="width: 60%;">
                         <mat-label>Enter your email</mat-label>       
-                        <input matInput placeholder="pat@example.com" #remail  required>  
+                        <input matInput placeholder="pat@example.com" formControlName="remail">  
                         <mat-error 
-                        *ngIf="registerForm.hasError('remail',['email'])&&
-                        registerForm.get('remail')?.touched">{{getErrorMessage()}}</mat-error>
+                        *ngIf="registerForm.hasError('email',['remail'])&&
+                        registerForm.get('remail')?.touched">Email is invalid</mat-error>
                       </mat-form-field>
                     </div>
                     
                     <div class="formControl">
                       <mat-form-field appearance="fill" style="width: 60%;">
                         <mat-label>Enter your full name</mat-label>       
-                        <input matInput placeholder="full name" #rfullName id="fullName" type="text"
-                         formControlName="rfullName"  required>  
-                       
+                        <input matInput placeholder="full name" id="fullName" type="text"
+                         formControlName="rfullName">  
+                         <mat-error 
+                         *ngIf="registerForm.hasError('required',['rfullName'])&&
+                         registerForm.get('remail')?.touched">Enter your full name</mat-error>
                       </mat-form-field>
                     </div>
 
                     <div class="formControl" style="margin-top: 15px ;">
                       <mat-form-field appearance="fill" style="width: 60%;">
                         <mat-label>Enter your password</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'" #rpassWord id="password" placeholder="enter password">
+                        <input matInput [type]="hide ? 'password' : 'text'" id="password" placeholder="enter password" formControlName="rpassWord">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
+                        <mat-error 
+                         *ngIf="registerForm.hasError('required',['rpassword'])&&
+                         registerForm.get('rpassword')?.touched">Enter your password</mat-error>
                       </mat-form-field>
                     </div>
 
-                    <div class="formControl" style="margin-top: 15px ;">
+                    <div class="formControl" style="margin-top: 15px ;" formGroupName="rpasswordGr">
                       <mat-form-field appearance="fill" style="width: 60%;">
                         <mat-label>Confirm your password</mat-label>
                         <input matInput [type]="hide ? 'password' : 'text'"
-                         #rconfirmPassword
                         id="confirm-password"
                         formControlName="rconfirmPassword"
                         placeholder="confirm your password">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
+                        <mat-error 
+                         *ngIf="registerForm.get('rpasswordGr')?.invalid &&
+                         registerForm.get('rpasswordGr')!.get('rpassword')!.value &&
+                         registerForm.get('rpasswordGr')!.get('rconfirmPassword')!.touched">Password is not compatible</mat-error>
                       </mat-form-field>
                     </div>
 

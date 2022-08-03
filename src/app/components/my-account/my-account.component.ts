@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { ExistEmailValidator } from 'src/app/validators/existEmailValidator';
 export function matchedPassword(c: AbstractControl) {
   const passwordValue = c.get('password')?.value;
   const confirmPasswordValue = c.get('confirmPassword')?.value;
@@ -21,12 +22,16 @@ export function matchedPassword(c: AbstractControl) {
 })
 export class MyAccountComponent implements OnInit {
   credentials = {'username': '', 'password': ''};
-  email = new FormControl("", [Validators.required, Validators.email]);
-  passWord = new FormControl();
+  email:FormControl;
+  passWord = new FormControl("", [Validators.required]);
   hide = true;
   registerForm!: FormGroup;
-  constructor(private userService: UserService, private route: Router) {
+  constructor(private emailExistValidator: ExistEmailValidator , private userService: UserService, private route: Router) {
     // this.email.setErrors(Validators.email).
+    this.email = new FormControl("", {validators: [Validators.required, Validators.email], 
+      asyncValidators:[this.emailExistValidator.validate.bind(this.emailExistValidator)], updateOn: 'blur'});
+    // this.email.addAsyncValidators([this.emailExistValidator.validate.bind(this.emailExistValidator)]);
+    // this.email.up
     this.registerForm = new FormGroup({
       remail: new FormControl('', [Validators.required, Validators.email]),
       rfullName: new FormControl('', [Validators.required]),
@@ -66,14 +71,18 @@ export class MyAccountComponent implements OnInit {
       console.log("Fail to login");
     }
   }
-  getErrorMessage() {
+  getLoginEMailErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'You must enter a value';
+      return 'You must enter Email';
     }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    if(this.email.hasError('email')) return  'Not a valid email';
+    if(this.email.hasError('emailNotExist')) return "Email did not exist";
+    return "exist";
   }
 
+  getLoginPasswordErrorMessage(){
+    return this.passWord.hasError('required') ? 'You must enter Password' : '';
+  }
   onRegister(){}
 
 }
