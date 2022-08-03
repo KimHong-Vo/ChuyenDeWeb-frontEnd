@@ -19,6 +19,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
@@ -54,7 +55,7 @@ import { HighlightSearchPipe } from './shared/pipe/HighlightSearch.pipe';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatPaginatorModule, 
+    MatPaginatorModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
   ],

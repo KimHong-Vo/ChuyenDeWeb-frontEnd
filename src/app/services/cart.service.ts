@@ -10,12 +10,12 @@ import { Cart } from '../models/cart';
 export class CartService {
 
   constructor(private http: HttpClient) { }
-  public loadCart(idUser:string):Observable<Cart>{
-    return this.http.get<Cart>(environment.apiBaseUrl+'/cart/user/'+idUser);
+  public loadCart():Observable<Cart>{
+    return this.http.get<Cart>(environment.apiBaseUrl+'/cart/user');
 
   }
-  public addProductToCart(bookID:number):Observable<String>{
-    return this.http.get<String>(environment.apiBaseUrl+'/cart/addCart/'+bookID);
+  public addProductToCart(bookID:number):Observable<string>{
+    return this.http.get<string>(environment.apiBaseUrl+'/cart/addCart/'+bookID);
   }
 
   public removeProductToCart(cartItem:number):Observable<boolean>{

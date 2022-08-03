@@ -39,7 +39,7 @@
                       <div *ngIf="book.inStockNumber === 0">
                         <button mat-button disabled="true">Add to cart</button>
                       </div>
-                      <div *ngIf="book.inStockNumber != 0">
+                      <div *ngIf="book.inStockNumber != 0" (click)="addProductToCart(book.id)">
                         <button mat-button>Add to cart</button>
                       </div>
                     </mat-card-actions>

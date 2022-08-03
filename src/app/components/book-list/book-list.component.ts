@@ -55,9 +55,9 @@ export class BookListComponent implements OnInit {
     this.numberItemOnCol = browerSize.getSize();
     console.log('call onresize');
   }
-  
+
   onSelectBook(book: Book){
-    this.router.navigate(['bookDetails', book.id]);
+    this.router.navigate(['/bookDetail', book.id]);
   }
 
   public handlePage(e: PageEvent){
@@ -74,7 +74,7 @@ export class BookListComponent implements OnInit {
       this.bookListBehavior.next( response.books);
       this.totalItem = response.totalItem;
       // this.bookList$.forEach(b =>{console.log("hello")})
-      
+
     }, (error: HttpErrorResponse) =>{console.log(error.status)})
   }
 

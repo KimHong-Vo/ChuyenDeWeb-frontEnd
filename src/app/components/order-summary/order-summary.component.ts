@@ -17,7 +17,7 @@ export class OrderSummaryComponent {
   cartItemList: CartItem[] = [{
     id: 10,
     subtotal: 5,
-    qty: 15,
+    quantities: 15,
     book:  {
       id: 1,
       title: "Angular tutorial",
@@ -50,7 +50,7 @@ export class OrderSummaryComponent {
     //     phone: string;
     //     enabled: boolean;
     //     userPayments: UserPayment[];
-    //     userShippingList: UserShipping[];    
+    //     userShippingList: UserShipping[];
     //   }
     // },
     toUpdate: false
