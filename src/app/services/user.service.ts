@@ -21,8 +21,8 @@ export class UserService {
   }
 
   public validateLogin():boolean{
-    return this.user$!=null;
-    // return !this.user$;
+    // return this.user$!=null;
+    return !this.user$;
   }
 
   public login(email:String, password:string): Observable<string>{

@@ -68,7 +68,9 @@ export class MyAccountComponent implements OnInit {
       this.route.navigateByUrl("/");
     }
     else{
-      console.log("Fail to login");
+      alert("Fail to login: Please check your password again!");
+      this.passWord.setValue("");
+      this.route.navigateByUrl("/my-account");
     }
   }
   getLoginEMailErrorMessage() {
