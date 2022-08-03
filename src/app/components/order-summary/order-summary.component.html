@@ -41,7 +41,7 @@
       <div>
         <h3>List of Items :</h3>
       </div>
-      
+
       <mat-grid-list cols="12" *ngFor="let cartItem of cartItemList">
         <hr/>
         <mat-grid-tile colspan="2">
@@ -56,15 +56,15 @@
                 <a class="pointer" (click)="onSelectBook(cartItem.book)">
                     <p style="margin-bottom: 0;">{{cartItem.book.title}}</p>
                 </a>
-        
+
                 <p *ngIf="cartItem.book.inStockNumber > 10" style="color:green; margin-bottom: 0;">In Stock</p>
-        
+
                 <p *ngIf="cartItem.book.inStockNumber < 10 && cartItem.book.inStockNumber > 0"
                     style="color:green; margin-bottom: 0;">
                     Only <span>{{cartItem.book.inStockNumber}}</span> In Stock</p>
-        
+
                 <p *ngIf="cartItem.book.inStockNumber == 0" style="color:darkred; margin-bottom: 0;">Product Unavailable</p>
-        
+
                 <a class="pointer" (click)="onRemoveCartItem(cartItem)">delete</a>
             </div>
         </mat-grid-tile>
@@ -76,15 +76,15 @@
         </mat-grid-tile>
 
         <mat-grid-tile colspan="2" style="text-align: center;">
-          <h5 style="font-size: large">{{cartItem.qty}}</h5>
+          <h5 style="font-size: large">{{cartItem.quantities}}</h5>
         </mat-grid-tile>
       </mat-grid-list>
-  
+
     </div>
-  
-  
+
+
   </div>
-  
+
   <div style="padding-top: 100px;">
 
   </div>

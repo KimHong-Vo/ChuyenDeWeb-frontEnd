@@ -1,4 +1,4 @@
-<div class="container" style="padding-bottom:150px ;"> 
+<div class="container" style="padding-bottom:150px ;">
     <div style="margin-top: 3%; text-align: center;" >
       <h2 class="section-headline"><span>Book list</span></h2>
     </div>
@@ -17,6 +17,7 @@
       <div style="margin:2% 10%;" *ngIf="(bookList$ | async) as books">
         <mat-grid-list cols="{{numberItemOnCol}}" rowHeight="2:3" gutterSize="10px">
 
+
           <mat-grid-tile *ngFor="let book of books" style="width: 100%;">
             <div (click)="onSelectBook(book)" style="width: 100%;">
               <mat-card  style="border-color: #38444d !important; width: 75%;">
@@ -25,6 +26,7 @@
                   <h3>{{book.title}}</h3>
                   <p>Author: {{book.author}}</p>
                   <p>price: {{book.ourPrice | currency:"USD"}}</p>
+
                 </mat-card-content>
                 <mat-card-actions align="end">
                   <button mat-button><mat-icon>visibility</mat-icon></button>
@@ -33,6 +35,7 @@
               </mat-card>
             </div>
           </mat-grid-tile>
+
         </mat-grid-list>
     </div>
     <div style="margin-top:15px ;">
@@ -49,4 +52,4 @@
     </div>
   </div>
 </div>
-  
+
